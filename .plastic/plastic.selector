@@ -1,0 +1,4 @@
+repository "VerticalSlice@fortynineparallels@cloud"
+  path "/"
+    br "/main"
+    co "/main"
