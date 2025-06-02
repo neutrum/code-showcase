@@ -14,6 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LoaderManagerInstance: {fileID: -2375508934892864550}
   m_InitManagerOnStart: 1
+--- !u!114 &-5480654839784443560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d236b7d11115f2143951f1e14045df39, type: 3}
+  m_Name: Metro Settings
+  m_EditorClassIdentifier: 
+  m_LoaderManagerInstance: {fileID: -775795191563975614}
+  m_InitManagerOnStart: 1
 --- !u!114 &-2375508934892864550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,7 +44,8 @@ MonoBehaviour:
   m_AutomaticLoading: 0
   m_AutomaticRunning: 0
   m_Loaders:
-  - {fileID: 11400000, guid: 0a32a79b191c96041b4eebdbe354baab, type: 2}
+  - {fileID: 11400000, guid: 87eed614479972443b393d60d929d4ba, type: 2}
+  - {fileID: 11400000, guid: c4749650c0a0c5343bbec985d57de5ef, type: 2}
 --- !u!114 &-2012013630076543996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,7 +62,24 @@ MonoBehaviour:
   m_AutomaticLoading: 0
   m_AutomaticRunning: 0
   m_Loaders:
-  - {fileID: 11400000, guid: 0a32a79b191c96041b4eebdbe354baab, type: 2}
+  - {fileID: 11400000, guid: 87eed614479972443b393d60d929d4ba, type: 2}
+--- !u!114 &-775795191563975614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c3631f5e58749a59194e0cf6baf6d5, type: 3}
+  m_Name: Metro Providers
+  m_EditorClassIdentifier: 
+  m_RequiresSettingsUpdate: 0
+  m_AutomaticLoading: 0
+  m_AutomaticRunning: 0
+  m_Loaders:
+  - {fileID: 11400000, guid: 87eed614479972443b393d60d929d4ba, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,10 +92,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2dc886499c26824283350fa532d087d, type: 3}
   m_Name: XRGeneralSettingsPerBuildTarget
   m_EditorClassIdentifier: 
-  Keys: 0100000007000000
+  Keys: 01000000070000000e000000
   Values:
   - {fileID: -5678556943936787927}
   - {fileID: 1723365315794957284}
+  - {fileID: -5480654839784443560}
 --- !u!114 &1723365315794957284
 MonoBehaviour:
   m_ObjectHideFlags: 0
