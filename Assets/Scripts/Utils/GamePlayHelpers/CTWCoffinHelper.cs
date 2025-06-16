@@ -1,4 +1,6 @@
 using UnityEngine;
+using Utils.MessageBus;
+using Utils.Messages;
 
 public class CTWCoffingHelper : MonoBehaviour
 {
@@ -17,5 +19,15 @@ public class CTWCoffingHelper : MonoBehaviour
         Eye.SetActive(false);
         TrueEye.SetActive(true);
         Skull.transform.SetParent(null);
+    }
+
+    public void StartMessage()
+    {
+        CTWMessageBus<CTWWitchStartAnimationMessage>.Send(new CTWWitchStartAnimationMessage());
+    }
+
+    public void StopMessage()
+    {
+        CTWMessageBus<CTWWitchStopAnimationMessage>.Send(new CTWWitchStopAnimationMessage());
     }
 }

@@ -22,6 +22,8 @@ MonoBehaviour:
   m_Scenes:
   - m_enabled: 1
     m_path: Assets/MRUKSamples/VirtualHome/CTWScene.unity
+  - m_enabled: 0
+    m_path: Assets/AutoHand/Examples/Scenes/MetaXR/Demo.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
@@ -169,12 +171,6 @@ MonoBehaviour:
     - line: '|   preloadedAssets:'
     - line: '|   - {fileID: 11400000, guid: c0c324196de019047b57280133904810, type:
         2}'
-    - line: '|   - {fileID: 11400000, guid: 6623ee56debf1414c8da6ef316a1aaba, type:
-        2}'
-    - line: '|   - {fileID: 1723365315794957284, guid: a02410354ace8ee4eaedcfcbd778bd95,
-        type: 2}'
-    - line: '|   - {fileID: -682077771502999523, guid: f3099eb1d4126094fa3f53719a9b07d1,
-        type: 2}'
     - line: '|   metroInputSource: 0'
     - line: '|   wsaTransparentSwapchain: 0'
     - line: '|   m_HolographicPauseOnTrackingLoss: 1'

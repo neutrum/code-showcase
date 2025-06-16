@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3fbbf92e-3372-4e7e-a209-50707012afde" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/GamePlayHelpers/CTWCrankFollower.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/GamePlayHelpers/CTWCrankFollower.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Logging.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Logging/CTWLogger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Logging/CTWLogger.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-MRUtilityKitSample/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.plastic/plastic.wktree" beforeDir="false" afterPath="$PROJECT_DIR$/.plastic/plastic.wktree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Blue 3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Blue 3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Blue 4.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Blue 4.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Blue 5.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Blue 5.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Blue_1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Blue_1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Green.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Pink.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Pink.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Purple.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Purple.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/AH_Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Black Rubber.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Black Rubber.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Blue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Green Plastic.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Green Plastic.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Green.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Grey.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Grey.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/GreyDevGrid_Diffuse 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/GreyDevGrid_Diffuse 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/GunHighlights.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/GunHighlights.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Red Plastic.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Red Plastic.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/SemiTransparent 2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/SemiTransparent 2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/SemiTransparent.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/SemiTransparent.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Shiny Metal 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Shiny Metal 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/TransparentRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/TransparentRed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/Chest/Materials/chest_lambert1_BaseColor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/Chest/Materials/chest_lambert1_BaseColor.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/Gold Bar/Materials/gold_bar_DefaultMaterial_BaseColor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/Gold Bar/Materials/gold_bar_DefaultMaterial_BaseColor.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/Materials/cupboard 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/Materials/cupboard 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/Materials/cupboard 2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/Materials/cupboard 2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/Materials/cupboard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/Materials/cupboard.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/TrainingDummy/Materials/scarecrow_albedo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/TrainingDummy/Materials/scarecrow_albedo.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/grenade/Materials/grenadeColor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Mesh/grenade/Materials/grenadeColor.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Scenes/MetaXR/Demo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Scenes/MetaXR/Demo.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Resources/Materials/AutoHandLogo 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Resources/Materials/AutoHandLogo 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Resources/Materials/AutoHandLogo 2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Resources/Materials/AutoHandLogo 2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CTWMeshOverlay.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CTWMeshOverlay.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MRUKSamples/VirtualHome/CTWScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MRUKSamples/VirtualHome/CTWScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Crouch Turn To Stand.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Crouch Turn To Stand.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/New Animator Controller.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/New Animator Controller.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PrefabyFinal/MusicBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PrefabyFinal/MusicBox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PrefabyFinal/MusicBox.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PrefabyFinal/MusicBox.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RakvaPLay/Wrapped/CoffinWrapperV2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RakvaPLay/Wrapped/CoffinWrapperV2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SceneTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SceneTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/GamePlayHelpers/CTWCoffinHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/GamePlayHelpers/CTWCoffinHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Build Profiles/New Android™ Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Build Profiles/New Android™ Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/CHANGELOG.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Editor/TransformCacheScope.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Editor/TransformCacheScope.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Editor/VatBaker.Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Editor/VatBaker.Editor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Editor/VatBakerCore.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Editor/VatBakerCore.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Editor/VatBakerWindowForAnimation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Editor/VatBakerWindowForAnimation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/LICENSE.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/Animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/Animation/VATAnimation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/Animation/VATAnimation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/Animation/VATAnimator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/Animation/VATAnimator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/Animation/VATAnimatorData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/Animation/VATAnimatorData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/VatBaker.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/VatBaker.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/VatShaderProperty.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Runtime/VatShaderProperty.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/Vat.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/Vat.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/VatSurfaceStandard.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/VatSurfaceStandard.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/VatURP.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/VatURP.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/VatURPFade.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/VatURPFade.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/VatUnlit.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/VatUnlit.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/vat_sampling.shadersubgraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/Shader/vat_sampling.shadersubgraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBaker/package.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/Cube_staticCube_1_512.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/Cube_staticCube_1_512/Cube_staticCube_1_512.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/Cube_staticCube_1_512/Cube_staticCube_1_512.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/Cube_staticCube_1_512/Cube_staticCube_1_512.normTex.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/Cube_staticCube_1_512/Cube_staticCube_1_512.normTex.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/Cube_staticCube_1_512/Cube_staticCube_1_512.posTex.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/Cube_staticCube_1_512/Cube_staticCube_1_512.posTex.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/Cube_staticCube_1_512/Cube_staticCube_1_512.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/Cube_staticCube_1_512/Cube_staticCube_1_512.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_1024.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_1024/carodej@Zombie Idle_Zombie Idle_5_1024.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_1024/carodej@Zombie Idle_Zombie Idle_5_1024.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_1024/carodej@Zombie Idle_Zombie Idle_5_1024.normTex.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_1024/carodej@Zombie Idle_Zombie Idle_5_1024.normTex.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_1024/carodej@Zombie Idle_Zombie Idle_5_1024.posTex.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_1024/carodej@Zombie Idle_Zombie Idle_5_1024.posTex.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_1024/carodej@Zombie Idle_Zombie Idle_5_1024.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_1024/carodej@Zombie Idle_Zombie Idle_5_1024.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512 1.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512 1/carodej@Zombie Idle_Zombie Idle_5_512.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512 1/carodej@Zombie Idle_Zombie Idle_5_512.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512 1/carodej@Zombie Idle_Zombie Idle_5_512.normTex.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512 1/carodej@Zombie Idle_Zombie Idle_5_512.normTex.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512 1/carodej@Zombie Idle_Zombie Idle_5_512.posTex.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512 1/carodej@Zombie Idle_Zombie Idle_5_512.posTex.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512 1/carodej@Zombie Idle_Zombie Idle_5_512.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512 1/carodej@Zombie Idle_Zombie Idle_5_512.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512/carodej@Zombie Idle_Zombie Idle_5_512.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512/carodej@Zombie Idle_Zombie Idle_5_512.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512/carodej@Zombie Idle_Zombie Idle_5_512.normTex.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512/carodej@Zombie Idle_Zombie Idle_5_512.normTex.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512/carodej@Zombie Idle_Zombie Idle_5_512.posTex.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512/carodej@Zombie Idle_Zombie Idle_5_512.posTex.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512/carodej@Zombie Idle_Zombie Idle_5_512.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/carodej@Zombie Idle_Zombie Idle_5_512/carodej@Zombie Idle_Zombie Idle_5_512.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/supolienka3_StaticAnimations_1_1024.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/supolienka3_StaticAnimations_1_1024/supolienka3_StaticAnimations_1_1024.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/supolienka3_StaticAnimations_1_1024/supolienka3_StaticAnimations_1_1024.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/supolienka3_StaticAnimations_1_1024/supolienka3_StaticAnimations_1_1024.normTex.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/supolienka3_StaticAnimations_1_1024/supolienka3_StaticAnimations_1_1024.normTex.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/supolienka3_StaticAnimations_1_1024/supolienka3_StaticAnimations_1_1024.posTex.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/supolienka3_StaticAnimations_1_1024/supolienka3_StaticAnimations_1_1024.posTex.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/supolienka3_StaticAnimations_1_1024/supolienka3_StaticAnimations_1_1024.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VatBakerOutput/supolienka3_StaticAnimations_1_1024/supolienka3_StaticAnimations_1_1024.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/GamePlayHelpers/CTWWitchController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Messages/CTWWitchStartAnimationMessage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.meta.xr.mrutilitykit@1fc24031e485/Core/Scripts/FindSpawnPositions.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2y5QSu67KOqGFkC7KAskU6r53rh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\neutr\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\neutr\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\neutr\\AppData\\Local\\Symbols\\src&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.36f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath D:\Devel\Unity\Unity-MRUtilityKitSample -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="D:\Devel\Unity\Unity-MRUtilityKitSample" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.36f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\Devel\Unity\Unity-MRUtilityKitSample -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="D:\Devel\Unity\Unity-MRUtilityKitSample" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="23156">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="23156" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3fbbf92e-3372-4e7e-a209-50707012afde" name="Changes" comment="" />
+      <created>1749121958739</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1749121958739</updated>
+      <workItem from="1749121966609" duration="6335000" />
+      <workItem from="1749480976205" duration="7322000" />
+      <workItem from="1749504498324" duration="592000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utils/Animation/CTWDestroyOnFinish.cs</url>
+          <line>8</line>
+          <properties documentPath="D:\Devel\Unity\Unity-MRUtilityKitSample\Assets\Scripts\Utils\Animation\CTWDestroyOnFinish.cs" initialLine="8" containingFunctionPresentation="Method 'Start'">
+            <startOffsets>
+              <option value="180" />
+            </startOffsets>
+            <endOffsets>
+              <option value="204" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
