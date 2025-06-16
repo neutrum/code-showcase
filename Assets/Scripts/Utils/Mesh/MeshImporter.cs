@@ -12,11 +12,11 @@ public class MeshImporter : MonoBehaviour
     [Range(0, 100)]
     [SerializeField]
     public float flatnessThreshold = 0.1f;
-    
+
     void Start()
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, meshFileName);
-        
+
         var roomscanFilePath =  Path.Combine(Application.streamingAssetsPath, roomScanFileName);
         var roomScanData = MeshUtils.LoadRoomScan(roomscanFilePath);
         var globalMeshAnchor = roomScanData.anchors.Find(anchor => anchor.name == "GLOBAL_MESH");
@@ -24,7 +24,8 @@ public class MeshImporter : MonoBehaviour
         if (loadedMesh != null)
         {
             //   var filteredAnchors = roomScanData.anchors.FindAll(anchor => anchor.name == "COUCH");
-            var reloadedMesh = MeshUtils.RemoveVerticesInsideAnchors(loadedMesh, roomScanData.anchors, 0.5f);
+            var reloadedMesh = MeshUtils.RemoveVerticesInsideAnchors(loadedMesh, roomScanData.anchors, 0.5f, 1.6f);
+            //MeshUtils.RemoveVerticesInsideAnchors(loadedMesh, roomScanData.anchors, 0.5f);
             GetComponent<MeshFilter>().mesh = reloadedMesh;
             //MeshUtils.RenderAnchorsAsCubes(filteredAnchors, anchorRoot, 0.5f);
         }
