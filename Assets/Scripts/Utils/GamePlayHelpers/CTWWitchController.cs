@@ -16,10 +16,10 @@ public class CTWWitchController : MonoBehaviour
     void Start()
     {
         _material = GetComponent<MeshRenderer>().sharedMaterial;
-        _material.SetFloat(FRAMES, 1);
+        Stop();
         _cameraTransform = Camera.main.transform;
         transform.rotation = Quaternion.Euler(-88.89f, 0 , 0);
-        Run();
+        //Run();
     }
 
     private void Update()
