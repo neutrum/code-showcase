@@ -23,7 +23,7 @@ public class CTWEnemySpawner : MonoBehaviour
 
     }
 
-    public void SpawnObject(PositionType type = PositionType.OnWallWithDirection)
+    public void SpawnObject(PositionType type = PositionType.OnTopOfWall)
     {
         switch (type)
         {
@@ -31,11 +31,9 @@ public class CTWEnemySpawner : MonoBehaviour
                 SpawnOnTopOfWall();
                 break;
             case PositionType.OnWallWithDirection:
-                SpawnOnWall();
+                SpawnOnWall(Vector3.back);
                 break;
         }
-
-
     }
 
 
@@ -54,11 +52,12 @@ public class CTWEnemySpawner : MonoBehaviour
         }
     }
 
-    private void SpawnOnWall()
+    private void SpawnOnWall(Vector3 direction)
     {
-        var result = GetWallAlignedPose(Vector3.down);
+        var result = GetWallAlignedPose(direction);
         if (result.HasValue && ToSpawn != null)
         {
+            ToSpawn.name = $"Enemy-{GetName(direction)}";
             Instantiate(ToSpawn, result.Value.position, result.Value.rotation, transform);
         }
     }
@@ -144,6 +143,22 @@ public class CTWEnemySpawner : MonoBehaviour
 
 
 
+    private static readonly Dictionary<Vector3, string> VectorNames = new()
+    {
+        { Vector3.up, "Vector3.up" },
+        { Vector3.down, "Vector3.down" },
+        { Vector3.left, "Vector3.left" },
+        { Vector3.right, "Vector3.right" },
+        { Vector3.forward, "Vector3.forward" },
+        { Vector3.back, "Vector3.back" },
+        { Vector3.zero, "Vector3.zero" },
+        { Vector3.one, "Vector3.one" }
+    };
+
+    public static string GetName(Vector3 vector)
+    {
+        return VectorNames.TryGetValue(vector, out var name) ? name : vector.ToString();
+    }
 
 
 

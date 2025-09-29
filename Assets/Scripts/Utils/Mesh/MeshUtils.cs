@@ -316,7 +316,7 @@ namespace Utils
         }
 
         public static Mesh RemoveVerticesInsideAnchors(Mesh originalMesh, List<RoomScanData.AnchorData> anchors,
-            float epsilon = 0.01f, float maxY = float.MaxValue)
+            float epsilon = 0.01f, float maxY = float.MaxValue, Transform meshTransform = null)
         {
             if (originalMesh == null)
             {
@@ -335,48 +335,70 @@ namespace Utils
             for (int i = 0; i < vertices.Length; i++)
             {
                 Vector3 vertex = vertices[i];
+                Vector3 worldVertex = meshTransform != null ? meshTransform.TransformPoint(vertex) : vertex;
 
-                // Step 1: Skip vertex if it's above the maxY height
-                if (vertex.y > maxY + epsilon)
+                // Step 1: Skip vertex if it's above the maxY height (NO epsilon here)
+                if (worldVertex.y > maxY)
                 {
                     removedVertices++;
                     continue;
                 }
 
-                // Step 2: Check if the vertex is inside any anchor volume
+                // Step 2: Check if the vertex is inside any anchor volume (WITH epsilon)
                 bool insideAnchor = false;
-                int anchorIndex = 0;
-
                 foreach (RoomScanData.AnchorData anchor in anchors)
                 {
-                    if (anchor.VolumeBounds == null)
-                        continue;
-
-                    Bounds bounds = anchor.VolumeBounds.ToBounds();
+                    Bounds bounds;
                     Vector3 anchorPosition = anchor.position;
                     Quaternion anchorRotation = anchor.rotation;
+                    bool hasBounds = false;
 
-                    Vector3 localVertex = Quaternion.Inverse(anchorRotation) * (vertex - anchorPosition);
+                    if (anchor.VolumeBounds != null)
+                    {
+                        bounds = anchor.VolumeBounds.ToBounds();
+                        hasBounds = true;
+                    }
+                    else if (anchor.PlaneRect != null)
+                    {
+                        var rect = anchor.PlaneRect;
+                        Vector3 center = new Vector3(rect.x + rect.width / 2f, 0, rect.y + rect.height / 2f);
+                        Vector3 size = new Vector3(rect.width, 0.05f, rect.height);
+                        bounds = new Bounds(center, size);
+                        hasBounds = true;
+                    }
+                    else if (anchor.PlaneBoundary2D != null && anchor.PlaneBoundary2D.Count > 0)
+                    {
+                        float minX = float.MaxValue, maxX = float.MinValue;
+                        float minY = float.MaxValue, maxY2 = float.MinValue;
+                        foreach (var pt in anchor.PlaneBoundary2D)
+                        {
+                            if (pt.x < minX) minX = pt.x;
+                            if (pt.x > maxX) maxX = pt.x;
+                            if (pt.y < minY) minY = pt.y;
+                            if (pt.y > maxY2) maxY2 = pt.y;
+                        }
+                        Vector3 center = new Vector3((minX + maxX) / 2f, 0, (minY + maxY2) / 2f);
+                        Vector3 size = new Vector3(maxX - minX, 0.5f, maxY2 - minY); // 0.5f Y thickness
+                        bounds = new Bounds(center, size);
+                        hasBounds = true;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    // Transform vertex to anchor local space
+                    Vector3 localVertex = Quaternion.Inverse(anchorRotation) * (worldVertex - anchorPosition);
                     bounds.Expand(epsilon);
 
-                    if (bounds.Contains(localVertex))
+                    if (hasBounds && bounds.Contains(localVertex))
                     {
                         insideAnchor = true;
                         removedVertices++;
-
-#if UNITY_EDITOR
-                        // Optional: Visualize removed vertex
-                        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                        sphere.transform.localScale = Vector3.one * 0.01f;
-                        sphere.transform.position = vertex;
-#endif
                         break;
                     }
-
-                    anchorIndex++;
                 }
 
-                // Keep only if not inside anchor
                 if (!insideAnchor)
                 {
                     vertexMapping[i] = newVertices.Count;
@@ -412,195 +434,6 @@ namespace Utils
 
             return newMesh;
         }
-
-        // Method to remove vertices within anchor bounds
-        // public static Mesh RemoveVerticesInsideAnchors(Mesh originalMesh, List<RoomScanData.AnchorData> anchors,
-        //     float epsilon = 0.01f)
-        // {
-        //     if (originalMesh == null)
-        //     {
-        //         Debug.LogError("Mesh is null.");
-        //         return null;
-        //     }
-        //
-        //     Vector3[] vertices = originalMesh.vertices;
-        //     int[] triangles = originalMesh.triangles;
-        //     List<Vector3> newVertices = new List<Vector3>();
-        //     List<int> newTriangles = new List<int>();
-        //
-        //     Dictionary<int, int> vertexMapping = new Dictionary<int, int>(); // To track new vertex indices
-        //     int removedVertices = 0;
-        //
-        //     // Loop through the original vertices
-        //     for (int i = 0; i < vertices.Length; i++)
-        //     {
-        //         bool insideAnchor = false;
-        //         int anchorIndex = 0;
-        //
-        //         // Check if the vertex is inside any of the anchor volume bounds
-        //         foreach (RoomScanData.AnchorData anchor in anchors)
-        //         {
-        //             if (anchor.VolumeBounds == null)
-        //                 continue; // Skip anchors without volume bounds
-        //
-        //             // Get the anchor's bounds, position, and rotation
-        //             Bounds bounds = anchor.VolumeBounds.ToBounds();
-        //             Vector3 anchorPosition = anchor.position;
-        //             Quaternion anchorRotation = anchor.rotation;
-        //
-        //             // Transform vertex into the anchor's local space (inverse transform of anchor's position and rotation)
-        //             Vector3 localVertex = Quaternion.Inverse(anchorRotation) * (vertices[i] - anchorPosition);
-        //
-        //             // Expand bounds slightly to avoid precision issues
-        //             bounds.Expand(epsilon);
-        //
-        //             // Check if the local vertex is inside the bounds
-        //             if (bounds.Contains(localVertex))
-        //             {
-        //                 insideAnchor = true;
-        //                 Debug.Log($"Vertex {i} is inside the expanded bounds of anchor {anchorIndex} '{anchor.name}'");
-        //                 removedVertices++;
-        //
-        //                 // Create a small sphere to visualize the vertex (optional)
-        //                 GameObject vertexCube = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        //                 vertexCube.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-        //                 vertexCube.transform.position = vertices[i];
-        //                 break;
-        //             }
-        //
-        //             anchorIndex++;
-        //         }
-        //
-        //         // If the vertex is not inside any anchor bounds, add it to the new vertex list
-        //         if (!insideAnchor)
-        //         {
-        //             vertexMapping[i] = newVertices.Count; // Store the mapping to the new vertex index
-        //             newVertices.Add(vertices[i]);
-        //         }
-        //     }
-        //
-        //     // Loop through the triangles and only keep the ones whose vertices are not removed
-        //     for (int i = 0; i < triangles.Length; i += 3)
-        //     {
-        //         int v0 = triangles[i];
-        //         int v1 = triangles[i + 1];
-        //         int v2 = triangles[i + 2];
-        //
-        //         // Check if all three vertices of the triangle are still in the new vertex list
-        //         if (vertexMapping.ContainsKey(v0) && vertexMapping.ContainsKey(v1) && vertexMapping.ContainsKey(v2))
-        //         {
-        //             // Add the triangle with updated vertex indices
-        //             newTriangles.Add(vertexMapping[v0]);
-        //             newTriangles.Add(vertexMapping[v1]);
-        //             newTriangles.Add(vertexMapping[v2]);
-        //         }
-        //     }
-        //
-        //     // Create a new mesh with the filtered vertices and triangles
-        //     Mesh newMesh = new Mesh
-        //     {
-        //         vertices = newVertices.ToArray(),
-        //         triangles = newTriangles.ToArray()
-        //     };
-        //
-        //     newMesh.RecalculateNormals(); // Recalculate normals since we've modified the mesh
-        //     newMesh.RecalculateBounds(); // Recalculate bounds to reflect the new geometry
-        //
-        //     Debug.Log(
-        //         $"Removed {removedVertices} vertices inside anchors, new mesh has {newVertices.Count} vertices and {newTriangles.Count / 3} triangles.");
-        //
-        //     return newMesh;
-        // }
-
-        public static Mesh RemoveVerticesInsideAnchors(
-            Mesh originalMesh,
-            List<RoomScanData.AnchorData> anchors,
-            float epsilon = 0.01f,
-            float minHeight = float.MinValue,
-            float maxHeight = float.MaxValue)
-        {
-            if (originalMesh == null)
-            {
-                Debug.LogError("Mesh is null.");
-                return null;
-            }
-
-            Vector3[] vertices = originalMesh.vertices;
-            int[] triangles = originalMesh.triangles;
-            List<Vector3> newVertices = new List<Vector3>();
-            List<int> newTriangles = new List<int>();
-            Dictionary<int, int> vertexMapping = new Dictionary<int, int>();
-            int removedVertices = 0;
-
-            for (int i = 0; i < vertices.Length; i++)
-            {
-                Vector3 worldVertex = vertices[i]; // MRUK GlobalMeshAnchor provides world-space vertices
-
-                // Cull based on height in world space
-                if (worldVertex.y < minHeight || worldVertex.y > maxHeight)
-                {
-                    removedVertices++;
-                    continue;
-                }
-
-                bool insideAnchor = false;
-
-                foreach (RoomScanData.AnchorData anchor in anchors)
-                {
-                    if (anchor.VolumeBounds == null) continue;
-
-                    Bounds bounds = anchor.VolumeBounds.ToBounds();
-                    Vector3 anchorPosition = anchor.position;
-                    Quaternion anchorRotation = anchor.rotation;
-
-                    // Transform the vertex into the anchor's local space
-                    Vector3 localVertex = Quaternion.Inverse(anchorRotation) * (worldVertex - anchorPosition);
-                    bounds.Expand(epsilon);
-
-                    if (bounds.Contains(localVertex))
-                    {
-                        insideAnchor = true;
-                        removedVertices++;
-                        break;
-                    }
-                }
-
-                if (!insideAnchor)
-                {
-                    vertexMapping[i] = newVertices.Count;
-                    newVertices.Add(worldVertex);
-                }
-            }
-
-            for (int i = 0; i < triangles.Length; i += 3)
-            {
-                int v0 = triangles[i];
-                int v1 = triangles[i + 1];
-                int v2 = triangles[i + 2];
-
-                if (vertexMapping.ContainsKey(v0) &&
-                    vertexMapping.ContainsKey(v1) &&
-                    vertexMapping.ContainsKey(v2))
-                {
-                    newTriangles.Add(vertexMapping[v0]);
-                    newTriangles.Add(vertexMapping[v1]);
-                    newTriangles.Add(vertexMapping[v2]);
-                }
-            }
-
-            Mesh newMesh = new Mesh
-            {
-                vertices = newVertices.ToArray(),
-                triangles = newTriangles.ToArray()
-            };
-            newMesh.RecalculateNormals();
-            newMesh.RecalculateBounds();
-
-            Debug.Log($"Removed {removedVertices} vertices (anchor or height-culled). Result: {newVertices.Count} vertices, {newTriangles.Count / 3} triangles.");
-
-            return newMesh;
-        }
-
 
         public static void RenderAnchorsAsCubes(List<RoomScanData.AnchorData> anchors, Transform parent,
             float epsilon = 0.0f)

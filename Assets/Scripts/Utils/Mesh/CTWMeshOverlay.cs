@@ -12,7 +12,9 @@ public class CTWMeshOverlay : MonoBehaviour
         var texture = Resources.Load<Texture2D>("Materials/tangled_cobweb_texture_alpha_v2");
         var roomScanData = MRUK.Instance.GetCurrentRoom();
         var globalMeshAnchor = MRUK.Instance.GetCurrentRoom().GlobalMeshAnchor.GlobalMesh;
-        var reducedMesh = MeshUtils.RemoveVerticesInsideAnchors(globalMeshAnchor, MeshUtils.ConvertAllAnchors(roomScanData.Anchors), 0.5f, 1.6f);
+        var globalMeshTransform = MRUK.Instance.GetCurrentRoom().GlobalMeshAnchor.transform;
+        if (globalMeshAnchor == null) return;
+        var reducedMesh = MeshUtils.RemoveVerticesInsideAnchors(globalMeshAnchor, MeshUtils.ConvertAllAnchors(roomScanData.Anchors), 0.1f, 1.9f, globalMeshTransform);
         reducedMesh.RecalculateNormals();
         reducedMesh.RecalculateTangents();
         GeneratePlanarUVs(reducedMesh);

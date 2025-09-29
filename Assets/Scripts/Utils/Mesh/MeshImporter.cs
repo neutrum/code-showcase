@@ -24,7 +24,7 @@ public class MeshImporter : MonoBehaviour
         if (loadedMesh != null)
         {
             //   var filteredAnchors = roomScanData.anchors.FindAll(anchor => anchor.name == "COUCH");
-            var reloadedMesh = MeshUtils.RemoveVerticesInsideAnchors(loadedMesh, roomScanData.anchors, 0.5f, 1.6f);
+            var reloadedMesh = MeshUtils.RemoveVerticesInsideAnchors(loadedMesh, roomScanData.anchors, 0.5f, 3.0f);
             //MeshUtils.RemoveVerticesInsideAnchors(loadedMesh, roomScanData.anchors, 0.5f);
             GetComponent<MeshFilter>().mesh = reloadedMesh;
             //MeshUtils.RenderAnchorsAsCubes(filteredAnchors, anchorRoot, 0.5f);
