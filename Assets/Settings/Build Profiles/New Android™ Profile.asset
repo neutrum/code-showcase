@@ -21,9 +21,11 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
+    m_path: Assets/Scenes/Bootstrap.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Intro.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/CTWScene.unity
-  - m_enabled: 0
-    m_path: Assets/AutoHand/Examples/Scenes/MetaXR/Demo.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:

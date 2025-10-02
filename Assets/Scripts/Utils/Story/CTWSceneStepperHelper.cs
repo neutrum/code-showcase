@@ -13,4 +13,9 @@ public class CTWSceneStepperHelper : MonoBehaviour
     {
 
     }
+
+    public void HandleNext()
+    {
+
+    }
 }
