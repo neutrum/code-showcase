@@ -6,12 +6,12 @@ namespace Utils.GameObjectExt
 {
     public class CTWCameraFrustrumDetector : MonoBehaviour
     {
-        public Camera targetCamera; // Set externally or via inspector
+        public Camera? targetCamera; // nullable, may be assigned later
         public Action? onEnterFrustum;
         public Action? onExitFrustum;
 
         private bool wasVisible = false;
-        private Renderer rend;
+        private Renderer? rend;
 
         private void Awake()
         {
@@ -20,12 +20,10 @@ namespace Utils.GameObjectExt
 
         private void Update()
         {
-            if (targetCamera == null)
-                targetCamera = Camera.main;
+            targetCamera ??= Camera.main;
             if (targetCamera == null || rend == null)
                 return;
 
-            // Early out if not visible to any camera
             if (!rend.isVisible)
             {
                 if (wasVisible)
