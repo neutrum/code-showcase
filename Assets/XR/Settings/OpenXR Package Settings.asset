@@ -754,7 +754,6 @@ MonoBehaviour:
   features:
   - {fileID: 228166740082282554}
   - {fileID: 7460337453812916977}
-  - {fileID: -4170346251504626884}
   - {fileID: 2796817005422950711}
   - {fileID: -5995148742741683066}
   - {fileID: 6218033086084636165}
@@ -771,6 +770,7 @@ MonoBehaviour:
   - {fileID: -1819072621067961829}
   - {fileID: -2867091496547383676}
   - {fileID: -4567550386853954301}
+  - {fileID: -4170346251504626884}
   - {fileID: -7262087370161242019}
   - {fileID: -613965699883247800}
   - {fileID: 297377170696203426}
@@ -874,6 +874,7 @@ MonoBehaviour:
   m_Name: Metro
   m_EditorClassIdentifier: 
   features:
+  - {fileID: 7517255173847489057}
   - {fileID: 2548383038726049590}
   - {fileID: 6049872171064783245}
   - {fileID: -3023320292915844498}
@@ -982,7 +983,6 @@ MonoBehaviour:
   features:
   - {fileID: 5676004969353759269}
   - {fileID: 1518124945365860660}
-  - {fileID: -139349255465744209}
   - {fileID: -5032876097435635545}
   - {fileID: -6403349437002132913}
   - {fileID: 5379475888087217197}
@@ -998,6 +998,7 @@ MonoBehaviour:
   - {fileID: -4089558841955999091}
   - {fileID: -1853551739269202885}
   - {fileID: -2749805818395181481}
+  - {fileID: -139349255465744209}
   - {fileID: 2084572336554652140}
   - {fileID: 124890367920216493}
   - {fileID: -6182905714885427727}
@@ -1018,7 +1019,7 @@ MonoBehaviour:
   - {fileID: 5097365792321654031}
   - {fileID: 4037626160872180330}
   m_renderMode: 1
-  m_latencyOptimization: 0
+  m_latencyOptimization: 1
   m_autoColorSubmissionMode: 1
   m_colorSubmissionModes:
     m_List: 00000000
@@ -2144,11 +2145,13 @@ MonoBehaviour:
   m_Name: OpenXRCompositionLayersFeature Metro
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: 
-  version: 
-  featureIdInternal: 
-  openxrExtensionStrings: 
-  company: 
+  nameUi: Composition Layers Support
+  version: 1.0.0
+  featureIdInternal: com.unity.openxr.feature.compositionlayers
+  openxrExtensionStrings: XR_KHR_composition_layer_cylinder XR_KHR_composition_layer_equirect
+    XR_KHR_composition_layer_equirect2 XR_KHR_composition_layer_cube XR_KHR_composition_layer_color_scale_bias
+    XR_KHR_android_surface_swapchain
+  company: Unity
   priority: 0
   required: 0
 --- !u!114 &8066154374542555485

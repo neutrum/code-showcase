@@ -5,7 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fbbf92e-3372-4e7e-a209-50707012afde" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-MRUtilityKitSample/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-MRUtilityKitSample/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MRUKSamples/BouncingBall/BouncingBall.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MRUKSamples/BouncingBall/BouncingBall.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CTWScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CTWScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/CobWebShader.shadergraph.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/CobWebShader.shadergraph.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/openVAT_decoder.shadergraph.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/openVAT_decoder.shadergraph.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/openVAT_decoder_basic.shadergraph.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/openVAT_decoder_basic.shadergraph.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/openVAT_decoder_basic_fade.shadergraph.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/openVAT_decoder_basic_fade.shadergraph.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-URP Lit.shadergraph.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-URP Lit.shadergraph.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-URP Unlit.shadergraph.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-URP Unlit.shadergraph.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VAT/ClownWalk/SK_Head_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VAT/ClownWalk/SK_Head_mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VAT/CrawlZombie/SK_Head_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VAT/CrawlZombie/SK_Head_mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VAT/CrouchToSprint/SK_Head_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VAT/CrouchToSprint/SK_Head_mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VAT/CrouchToStand/SK_Head_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VAT/CrouchToStand/SK_Head_mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VAT/CrouchToStandObject/SK_Head_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VAT/CrouchToStandObject/SK_Head_mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VAT/RunningCrawl/SK_Head_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VAT/RunningCrawl/SK_Head_mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,13 +33,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fde3c13fb32a45329a891b3df03f79081dee00/5a/1f1064a7/RenderSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/CTWStorySystem/CTWStorySystem/CTWBillboardPresenter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/CTWStorySystem/CTWStorySystem/CTWStoryPresenter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CTWQuestQuickPreset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Editor/FindMetaMaterials.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/GamePlayHelpers/CTWFresnelToggleHotkey.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/GamePlayHelpers/CTWWitchController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Messages/CTWNextScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Messages/CTWWitchStartAnimationMessage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Story/CTWSceneStepperHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@6c55ea033bef/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@6a355619334f/Unity.Entities/Stubs/Unity/Debug.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -113,7 +132,7 @@
       <workItem from="1758029907255" duration="6903000" />
       <workItem from="1759398254142" duration="13447000" />
       <workItem from="1759427228548" duration="9269000" />
-      <workItem from="1761042182263" duration="690000" />
+      <workItem from="1761042182263" duration="2879000" />
     </task>
     <servers />
   </component>
