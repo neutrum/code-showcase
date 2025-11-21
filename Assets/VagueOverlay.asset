@@ -51,7 +51,7 @@ MonoBehaviour:
   m_DepthAttachmentFormat: 0
   m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
-  m_IntermediateTextureMode: 1
+  m_IntermediateTextureMode: 0
 --- !u!114 &6534845123976020626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 4294967295
       PassNames: []
-    overrideMaterial: {fileID: 2100000, guid: e3ca8ae4adc1cc64abddc8f15f5d6a61, type: 2}
+    overrideMaterial: {fileID: 2100000, guid: fc8bf3f85078cb246a828fc3dbe2c432, type: 2}
     overrideMaterialPassIndex: 0
     overrideShader: {fileID: 0}
     overrideShaderPassIndex: 0

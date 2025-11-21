@@ -60,7 +60,7 @@ namespace CTW.Story
             tmp.fontSize = 36;
             tmp.alignment = TextAlignmentOptions.Center;
             tmp.color = Color.white;
-            tmp.enableWordWrapping = true;
+            tmp.textWrappingMode = TMPro.TextWrappingModes.Normal; // Updated from enableWordWrapping
             
             // Try to assign a font asset if none is set
             if (tmp.font == null)

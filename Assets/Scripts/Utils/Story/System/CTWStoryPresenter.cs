@@ -14,5 +14,8 @@ namespace CTW.Story
         public abstract IEnumerator Show(CTWStoryEvent.Slide slide);
         /// <summary>Hide the slide (fadeSeconds). Must finish when fully hidden.</summary>
         public abstract IEnumerator Hide(float fadeSeconds);
+        
+        /// <summary>Check if this presenter can handle audio playback. Override to return false if no AudioSource.</summary>
+        public virtual bool CanHandleAudio() => GetComponent<AudioSource>() != null;
     }
 }

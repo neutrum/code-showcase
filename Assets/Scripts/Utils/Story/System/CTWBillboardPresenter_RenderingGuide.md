@@ -290,3 +290,4 @@ The built-in solution (alwaysOnTop + sortingOrder) is optimized and works great 
 
 The presenter will now render cleanly on top without blending issues! 🎉
 
+

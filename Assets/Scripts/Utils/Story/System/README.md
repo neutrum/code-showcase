@@ -3,24 +3,13 @@
 A tiny story/event runner for Unity 6 that shows images + subtitles in front of the player (or any custom presentation).
 
 ## Files
-
-### Core System
 - `CTWStoryEvent.cs` – ScriptableObject describing slides (image, subtitle, optional audio).
 - `CTWStoryPresenter.cs` – Abstract base for any visual presentation.
 - `CTWStoryDirector.cs` – Runner/queue/flags, uses a presenter prefab.
+- `CTWBillboardPresenter.cs` – Default world-space billboard presenter (sticks in front of player).
 - `CTWStoryTrigger.cs` – Generic trigger to fire story events.
 
-### Presenters (Built-in)
-- `CTWBillboardPresenter.cs` – World-space billboard UI (default, good for VR dialog).
-- `CTWEventOnlyPresenter.cs` – Invisible presenter that fires UnityEvents/MessageBus.
-- `CTWDioramaPresenter.cs` – Spawns 3D miniature scenes in world space.
-- `CTWFullscreenPresenter.cs` – Dramatic fullscreen overlay with typewriter effect.
-- `CTWVideoPresenter.cs` – Video playback (fullscreen or billboard mode).
-- `CTWHybridPresenter.cs` – Meta-presenter that routes to different presenters via tags.
-
 All classes are under the `CTW.Story` namespace and prefixed with **CTW**.
-
-📖 **See [PRESENTERS_GUIDE.md](./PRESENTERS_GUIDE.md) for detailed usage examples!**
 
 ## Quick Setup
 1. **Import scripts** into `Assets/CTW/Story/`.

@@ -33,6 +33,7 @@ namespace CTW.Story
 
         private CTWStoryPresenter _presenter;
         private bool _isPlaying;
+        private AudioSource _audioSource;
 
         private void Awake()
         {
@@ -114,11 +115,28 @@ namespace CTW.Story
 
                 foreach (var s in ev.slides)
                 {
-                    // (Optional) audio from director keeps presenters visual-only
-                    if (s.audio)
+                    // Let presenter handle audio for better spatial positioning
+                    // Director only handles audio as fallback if presenter doesn't support it
+                    bool presenterHandledAudio = _presenter.CanHandleAudio();
+                    
+                    if (s.audio && !presenterHandledAudio)
                     {
-                        var a = GetComponent<AudioSource>() ?? gameObject.AddComponent<AudioSource>();
-                        a.spatialBlend = 0f; a.clip = s.audio; a.Play();
+                        // Fallback: Director handles audio for presenters without AudioSource
+                        if (_audioSource == null)
+                        {
+                            _audioSource = GetComponent<AudioSource>();
+                            if (_audioSource == null)
+                            {
+                                _audioSource = gameObject.AddComponent<AudioSource>();
+                                // Configure for 2D audio (UI sounds, fallback)
+                                _audioSource.spatialBlend = 0f; // 2D sound
+                                _audioSource.playOnAwake = false;
+                                _audioSource.volume = 1f;
+                            }
+                        }
+                        _audioSource.clip = s.audio; 
+                        _audioSource.Play();
+                        Debug.Log($"[StoryDirector] Playing fallback 2D audio: {s.audio.name}");
                     }
 
                     yield return _presenter.Show(s);

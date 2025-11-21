@@ -1,38 +1,32 @@
 // CTWFresnelToggleHotkey.cs
-// Unity 6 + URP + Input System.
-// Press F (or any bound control) to toggle Fresnel mode.
-// Attach to your MAIN camera.
+// Unity 6 + Meta XR SDK 78+ (XR Simulator) safe version
 
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 #endif
 
 [RequireComponent(typeof(Camera))]
 public class CTWFresnelToggleHotkey : MonoBehaviour
 {
     [Header("Path A — Camera stacking (recommended)")]
-    [Tooltip("Overlay camera that uses the Fresnel renderer. Keep disabled by default.")]
     public Camera overlayFresnelCamera;
 
     [Header("Path B — Renderer swap (single camera)")]
-    [Tooltip("Index of your normal/default renderer in the URP Asset (usually 0).")]
     public int defaultRendererIndex = 0;
-    [Tooltip("Index of your Fresnel renderer in the URP Asset (e.g., 1).")]
     public int fresnelRendererIndex = 1;
-    [Tooltip("Force start in default renderer on Awake (only for swap path).")]
     public bool forceStartInDefault = true;
 
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
     [Header("Input System")]
-    [Tooltip("Optional: reference an action from your Input Actions asset. If empty, F key is used by default.")]
     public InputActionReference toggleActionRef;
 
-    InputAction _action;       // runtime action we listen to
+    InputAction _action;
+    bool simulatorActive;
 #else
-    [Header("Legacy Input (only if old system is enabled)")]
     public KeyCode legacyToggleKey = KeyCode.F;
 #endif
 
@@ -43,49 +37,66 @@ public class CTWFresnelToggleHotkey : MonoBehaviour
     {
         camData = GetComponent<UniversalAdditionalCameraData>();
 
+#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+        DetectSimulator();
+#endif
+
         if (overlayFresnelCamera != null)
         {
             fresnelOn = overlayFresnelCamera.gameObject.activeSelf;
-            Debug.Log($"[FresnelToggle] Stacking mode. Overlay active = {fresnelOn}");
         }
-        else
+        else if (camData != null && forceStartInDefault)
         {
-            if (camData == null)
-                Debug.LogWarning("[FresnelToggle] No UniversalAdditionalCameraData on this camera.");
-
-            if (forceStartInDefault && camData != null)
-            {
-                camData.SetRenderer(defaultRendererIndex);
-                fresnelOn = false;
-                Debug.Log($"[FresnelToggle] Swap mode. Forcing start in default renderer index {defaultRendererIndex}.");
-            }
-            else
-            {
-                Debug.Log("[FresnelToggle] Swap mode. Starting without forcing renderer.");
-            }
+            camData.SetRenderer(defaultRendererIndex);
+            fresnelOn = false;
         }
     }
+
+#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+    void DetectSimulator()
+    {
+        // Meta XR Simulator devices contain "XRSimulator" or "XRSim"
+        simulatorActive =
+            XRDeviceSimulator.current != null ||
+            InputSystem.GetDevice<XRHMD>()?.description.deviceClass.Contains("XRSim") == true;
+
+        Debug.Log($"[FresnelToggle] XR Simulator active = {simulatorActive}");
+    }
+#endif
 
     void OnEnable()
     {
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
-        _action = toggleActionRef != null ? toggleActionRef.action
-                                          : new InputAction("ToggleFresnel", InputActionType.Button);
+        // 1) Resolve InputAction source
+        _action = toggleActionRef ? toggleActionRef.action
+                                  : new InputAction("ToggleFresnel", InputActionType.Button);
 
-        if (toggleActionRef == null && _action.bindings.Count == 0)
+        // 2) Add simulator + keyboard bindings if missing
+        if (_action.bindings.Count == 0)
         {
+            // Always available
             _action.AddBinding("<Keyboard>/f");
-            _action.AddBinding("<Gamepad>/start");
+
+            // XR Simulator primary button
             _action.AddBinding("<XRController>{RightHand}/primaryButton");
+            _action.AddBinding("<XRController>{LeftHand}/primaryButton");
+
+            // XR Simulator triggers
+            _action.AddBinding("<XRController>{RightHand}/trigger");
+            _action.AddBinding("<XRController>{LeftHand}/trigger");
+
+            // Gamepad fallback
+            _action.AddBinding("<Gamepad>/start");
+
+            Debug.Log("[FresnelToggle] Added default simulator + keyboard bindings.");
         }
 
+        // 3) Subscribe
         _action.performed += OnPerformed;
         _action.Enable();
 
-        if (toggleActionRef == null)
-            Debug.Log("[FresnelToggle] Input System: listening on default bindings (Keyboard F, Gamepad Start, XR primary).");
-        else
-            Debug.Log($"[FresnelToggle] Input System: using action '{toggleActionRef.name}'.");
+        // 4) Required on Meta SDK 78+ (fixes suppressed keyboard)
+        InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
 #endif
     }
 
@@ -95,7 +106,7 @@ public class CTWFresnelToggleHotkey : MonoBehaviour
         if (_action != null)
         {
             _action.performed -= OnPerformed;
-            if (toggleActionRef == null) _action.Dispose();
+            if (!toggleActionRef) _action.Dispose();
             _action = null;
         }
 #endif
@@ -104,13 +115,17 @@ public class CTWFresnelToggleHotkey : MonoBehaviour
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
     void OnPerformed(InputAction.CallbackContext ctx)
     {
+        // In XR Simulator, trigger delivers continuous values: only accept "pressed"
         if (!ctx.performed) return;
-        Toggle();
+
+        float value = ctx.ReadValue<float>();
+        if (value > 0.5f || value == 1f) Toggle();
     }
 #else
     void Update()
     {
-        if (Input.GetKeyDown(legacyToggleKey)) Toggle();
+        if (Input.GetKeyDown(legacyToggleKey))
+            Toggle();
     }
 #endif
 
@@ -121,18 +136,14 @@ public class CTWFresnelToggleHotkey : MonoBehaviour
         if (overlayFresnelCamera != null)
         {
             overlayFresnelCamera.gameObject.SetActive(fresnelOn);
-            Debug.Log($"[FresnelToggle] Stacking: overlay {(fresnelOn ? "ENABLED" : "DISABLED")}.");
+            Debug.Log($"[FresnelToggle] Overlay {(fresnelOn ? "ENABLED" : "DISABLED")}.");
             return;
         }
 
         if (camData != null)
         {
             camData.SetRenderer(fresnelOn ? fresnelRendererIndex : defaultRendererIndex);
-            Debug.Log($"[FresnelToggle] Swap: set renderer index → {(fresnelOn ? fresnelRendererIndex : defaultRendererIndex)}.");
-        }
-        else
-        {
-            Debug.LogWarning("[FresnelToggle] No overlay camera and no UniversalAdditionalCameraData found.");
+            Debug.Log($"[FresnelToggle] Renderer index → {(fresnelOn ? fresnelRendererIndex : defaultRendererIndex)}.");
         }
     }
 }

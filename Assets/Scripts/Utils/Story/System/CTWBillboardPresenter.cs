@@ -106,7 +106,7 @@ namespace CTW.Story
             tmp.color = Color.white;
             tmp.fontSize = 36;
             tmp.alignment = TextAlignmentOptions.Center;
-            tmp.enableWordWrapping = true;
+            tmp.textWrappingMode = TMPro.TextWrappingModes.Normal; // Updated from enableWordWrapping
             
             // Auto-sizing for better readability at different distances
             tmp.enableAutoSizing = true;
@@ -296,11 +296,19 @@ namespace CTW.Story
                 subtitle.text = slide.subtitle ?? "";
             }
             
-            // Optional: Handle audio (currently audio is handled by director, but available here if needed)
-            if (audioSource != null && slide.audio != null)
+            // Primary audio handling - spatial 3D audio positioned at the billboard
+            if (slide.audio != null)
             {
-                audioSource.clip = slide.audio;
-                audioSource.Play();
+                if (audioSource != null)
+                {
+                    audioSource.clip = slide.audio;
+                    audioSource.Play();
+                    Debug.Log($"[BillboardPresenter] Playing spatial audio: {slide.audio.name}");
+                }
+                else
+                {
+                    Debug.LogWarning("[BillboardPresenter] AudioSource is null! Audio will not play. Ensure Setup() was called properly.");
+                }
             }
             
             yield return FadeTo(1f, slide.fade);
