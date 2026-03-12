@@ -20,9 +20,9 @@ MonoBehaviour:
     rid: 8917734494589681861
   m_OverrideGlobalSceneList: 1
   m_Scenes:
-  - m_enabled: 1
+  - m_enabled: 0
     m_path: Assets/Scenes/Bootstrap.unity
-  - m_enabled: 1
+  - m_enabled: 0
     m_path: Assets/Scenes/Intro.unity
   - m_enabled: 1
     m_path: Assets/Scenes/CTWScene.unity
@@ -797,7 +797,7 @@ MonoBehaviour:
     - line: '|   webGLCloseOnQuit: 0'
     - line: '|   webWasm2023: 0'
     - line: '|   scriptingDefineSymbols:'
-    - line: '|     Android: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;ISDK_OPENXR_HAND'
+    - line: '|     Android: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;ISDK_OPENXR_HAND;VLB_URP'
     - line: '|     Standalone: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;ISDK_OPENXR_HAND'
     - line: '|     Windows Store Apps: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS'
     - line: '|   additionalCompilerArguments:'

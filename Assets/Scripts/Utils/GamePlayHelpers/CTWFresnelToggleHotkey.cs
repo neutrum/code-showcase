@@ -56,9 +56,11 @@ public class CTWFresnelToggleHotkey : MonoBehaviour
     void DetectSimulator()
     {
         // Meta XR Simulator devices contain "XRSimulator" or "XRSim"
-        simulatorActive =
-            XRDeviceSimulator.current != null ||
-            InputSystem.GetDevice<XRHMD>()?.description.deviceClass.Contains("XRSim") == true;
+        // Check XR HMD device description for simulator indicators
+        var xrHMD = InputSystem.GetDevice<XRHMD>();
+        simulatorActive = xrHMD != null && 
+                         (xrHMD.description.deviceClass.Contains("XRSim") || 
+                          xrHMD.description.deviceClass.Contains("Simulator"));
 
         Debug.Log($"[FresnelToggle] XR Simulator active = {simulatorActive}");
     }
