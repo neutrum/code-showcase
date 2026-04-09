@@ -2,7 +2,7 @@
 {
     public static class Version
     {
-        public const int Current = 20205;
+        public const int Current = 20206;
 
         public static string CurrentAsString => GetVersionAsString(Current);
 

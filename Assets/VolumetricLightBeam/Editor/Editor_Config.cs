@@ -380,17 +380,14 @@ namespace VLB
                         m_DrawerRenderQueue.Draw(EditorStrings.Config.GeometryRenderQueueSD);
                         m_DrawerRenderQueueHD.Draw(EditorStrings.Config.GeometryRenderQueueHD);
 
-                        if (BeamGeometrySD.isCustomRenderPipelineSupported)
+                        EditorGUI.BeginChangeCheck();
                         {
-                            EditorGUI.BeginChangeCheck();
-                            {
-                                renderPipeline.CustomEnum<RenderPipeline>(EditorStrings.Config.GeometryRenderPipeline, EditorStrings.Config.GeometryRenderPipelineEnumDescriptions);
-                            }
-                            if (EditorGUI.EndChangeCheck())
-                            {
-                                SetDirty(DirtyFlags.AllBeamGeom | DirtyFlags.Shader); // need to fully reset the BeamGeom to update the shader
-                                SRPHelper.SetScriptingDefineSymbolsForRenderPipeline((RenderPipeline)renderPipeline.enumValueIndex);
-                            }
+                            renderPipeline.CustomEnum<RenderPipeline>(EditorStrings.Config.GeometryRenderPipeline, EditorStrings.Config.GeometryRenderPipelineEnumDescriptions);
+                        }
+                        if (EditorGUI.EndChangeCheck())
+                        {
+                            SetDirty(DirtyFlags.AllBeamGeom | DirtyFlags.Shader); // need to fully reset the BeamGeom to update the shader
+                            SRPHelper.SetScriptingDefineSymbolsForRenderPipeline((RenderPipeline)renderPipeline.enumValueIndex);
                         }
 
                         if (m_TargetConfig.hasRenderPipelineMismatch)

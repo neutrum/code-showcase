@@ -3,10 +3,6 @@
 #endif
 #define FORCE_CURRENT_CAMERA_DEPTH_TEXTURE_MODE
 
-#if UNITY_2018_1_OR_NEWER
-#define VLB_SRP_SUPPORT // Comment this to disable SRP support
-#endif
-
 using UnityEngine;
 using System.Collections;
 
@@ -137,34 +133,18 @@ namespace VLB
             visible = false;
         }
 
-#if VLB_SRP_SUPPORT
-        Camera m_CurrentCameraRenderingSRP = null;
-
-        void OnDisable()
-        {
-            SRPHelper.UnregisterOnBeginCameraRendering(OnBeginCameraRenderingSRP);
-            m_CurrentCameraRenderingSRP = null;
-        }
-
-        public static bool isCustomRenderPipelineSupported { get { return true; } }
-#else
-        public static bool isCustomRenderPipelineSupported { get { return false; } }
-#endif
-
         bool shouldUseGPUInstancedMaterial
         { get {
             return m_Master._INTERNAL_DynamicOcclusionMode != MaterialManager.SD.DynamicOcclusion.DepthTexture // sampler cannot be passed to shader as instanced property
                 && Config.Instance.GetActualRenderingMode(ShaderMode.SD) == RenderingMode.GPUInstancing;
         }}
 
-        void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+            
             // When a GAO is disabled, all its coroutines are killed, so renable them on OnEnable.
             RestartFadeOutCoroutine();
-
-#if VLB_SRP_SUPPORT
-            SRPHelper.RegisterOnBeginCameraRendering(OnBeginCameraRenderingSRP);
-#endif
         }
 
         public void Initialize(VolumetricLightBeamSD master)
@@ -500,11 +480,9 @@ namespace VLB
                         coneMesh.bounds = bounds;
                     }
                 }
-
-#if VLB_SRP_SUPPORT
+                
                 // This update is to make QA test 'ReflectionObliqueProjection' pass
                 UpdateMatricesPropertiesForGPUInstancingSRP();
-#endif
             }
             MaterialChangeStop();
 
@@ -527,8 +505,7 @@ namespace VLB
             }
 #endif
         }
-
-#if VLB_SRP_SUPPORT
+        
         void UpdateMatricesPropertiesForGPUInstancingSRP()
         {
             if (SRPHelper.IsUsingCustomRenderPipeline() && Config.Instance.GetActualRenderingMode(ShaderMode.SD) == RenderingMode.GPUInstancing)
@@ -538,48 +515,11 @@ namespace VLB
             }
         }
 
-    #if UNITY_2019_1_OR_NEWER
-        void OnBeginCameraRenderingSRP(UnityEngine.Rendering.ScriptableRenderContext context, Camera cam)
-    #else
-        void OnBeginCameraRenderingSRP(Camera cam)
-    #endif
+        // Called with a valid camera and a valid master
+        protected override void OnWillCameraRenderThisBeam(Camera cam)
         {
-            m_CurrentCameraRenderingSRP = cam;
-        }
-#endif
-
-        void OnWillRenderObject()
-        {
-            Camera currentCam = null;
-
-#if VLB_SRP_SUPPORT
-            if (SRPHelper.IsUsingCustomRenderPipeline())
-            {
-                currentCam = m_CurrentCameraRenderingSRP;
-            }
-            else
-#endif
-            {
-                currentCam = Camera.current;
-            }
-
-            OnWillCameraRenderThisBeam(currentCam);
-        }
-
-        void OnWillCameraRenderThisBeam(Camera cam)
-        {
-            if (m_Master && cam)
-            {
-                if (
-#if UNITY_EDITOR
-                    Utils.IsEditorCamera(cam) || // make sure to call UpdateCameraRelatedProperties for editor scene camera 
-#endif
-                    cam.enabled)    // prevent from doing stuff when we render from a previous DynamicOcclusionDepthBuffer's DepthCamera, because the DepthCamera are disabled 
-                {
-                    UpdateCameraRelatedProperties(cam);
-                    m_Master._INTERNAL_OnWillCameraRenderThisBeam(cam);
-                }
-            }
+            UpdateCameraRelatedProperties(cam);
+            m_Master._INTERNAL_OnWillCameraRenderThisBeam(cam);
         }
 
         void UpdateCameraRelatedProperties(Camera cam)
@@ -593,11 +533,9 @@ namespace VLB
                     var camForwardVectorOSN = transform.InverseTransformDirection(cam.transform.forward).normalized;
                     float camIsInsideBeamFactor = cam.orthographic ? -1f : m_Master.GetInsideBeamFactorFromObjectSpacePos(camPosOS);
                     SetMaterialProp(ShaderProperties.SD.CameraParams, new Vector4(camForwardVectorOSN.x, camForwardVectorOSN.y, camForwardVectorOSN.z, camIsInsideBeamFactor));
-
-#if VLB_SRP_SUPPORT
+                    
                     // This update is to be able to move beams without trackChangesDuringPlaytime enabled with SRP & GPU Instancing
                     UpdateMatricesPropertiesForGPUInstancingSRP();
-#endif
 
                     if (m_Master.usedColorMode == ColorMode.Gradient)
                     {

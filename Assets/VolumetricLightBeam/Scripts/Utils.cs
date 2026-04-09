@@ -320,6 +320,18 @@ namespace VLB
             }
 #endif
         }
+        
+        public static bool IsEditorCamera(Camera cam)
+        {
+#if UNITY_EDITOR
+            var sceneView = UnityEditor.SceneView.currentDrawingSceneView;
+            if (sceneView)
+            {
+                return cam == sceneView.camera;
+            }
+#endif
+            return false;
+        }
 
 #if UNITY_EDITOR
         public static void _EditorSetAllBeamGeomDirty()
@@ -332,16 +344,6 @@ namespace VLB
         {
             VolumetricLightBeamSD._EditorSetAllMeshesDirty();
             VolumetricLightBeamHD._EditorSetAllMeshesDirty();
-        }
-
-        public static bool IsEditorCamera(Camera cam)
-        {
-            var sceneView = UnityEditor.SceneView.currentDrawingSceneView;
-            if (sceneView)
-            {
-                return cam == sceneView.camera;
-            }
-            return false;
         }
 
         public static void SetSameSceneVisibilityStatesThan(this GameObject self, GameObject model)

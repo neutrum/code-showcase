@@ -42,6 +42,7 @@ MonoBehaviour:
   experimentalFeaturesEnabled: 1
   insightPassthroughEnabled: 0
   _insightPassthroughSupport: 1
+  isPassthroughCameraAccessEnabled: 0
   _processorFavor: 0
   systemSplashScreen: {fileID: 2800000, guid: 875565ce2964530409153624c616301a, type: 3}
   systemSplashScreenType: 0

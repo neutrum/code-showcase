@@ -3,12 +3,7 @@
 #endif
 #define FORCE_CURRENT_CAMERA_DEPTH_TEXTURE_MODE
 
-#if UNITY_2018_1_OR_NEWER
-#define VLB_SRP_SUPPORT // Comment this to disable SRP support
-#endif
-
 using UnityEngine;
-using System.Collections;
 
 #pragma warning disable 0429, 0162 // Unreachable expression code detected (because of Noise3D.isSupported on mobile)
 
@@ -39,20 +34,7 @@ namespace VLB
         {
             set { if(meshRenderer) meshRenderer.sortingOrder = value; }
         }
-
-#if VLB_SRP_SUPPORT
-        Camera m_CurrentCameraRenderingSRP = null;
-
-        void OnDisable()
-        {
-            SRPHelper.UnregisterOnBeginCameraRendering(OnBeginCameraRenderingSRP);
-            m_CurrentCameraRenderingSRP = null;
-        }
-
-        public static bool isCustomRenderPipelineSupported { get { return true; } }
-#else
-        public static bool isCustomRenderPipelineSupported { get { return false; } }
-#endif
+        
 
         bool shouldUseGPUInstancedMaterial
         {
@@ -64,13 +46,6 @@ namespace VLB
                 }
                 return false;
             }
-        }
-
-        void OnEnable()
-        {
-#if VLB_SRP_SUPPORT
-            SRPHelper.RegisterOnBeginCameraRendering(OnBeginCameraRenderingSRP);
-#endif
         }
 
         public void Initialize(VolumetricLightBeamHD master)
@@ -344,11 +319,9 @@ namespace VLB
 
                 // make sure the bounds are good from the startup
                 ComputeLocalMatrix(); // compute matrix before sending it to the shader
-
-#if VLB_SRP_SUPPORT
+                
                 // This update is to make QA test 'ReflectionObliqueProjection' pass
                 UpdateMatricesPropertiesForGPUInstancingSRP();
-#endif
             }
             MaterialChangeStop();
 
@@ -371,8 +344,7 @@ namespace VLB
             }
 #endif
         }
-
-#if VLB_SRP_SUPPORT
+        
         void UpdateMatricesPropertiesForGPUInstancingSRP()
         {
             if (SRPHelper.IsUsingCustomRenderPipeline() && Config.Instance.GetActualRenderingMode(ShaderMode.HD) == RenderingMode.GPUInstancing)
@@ -381,52 +353,15 @@ namespace VLB
                 SetMaterialProp(ShaderProperties.WorldToLocalMatrix, transform.worldToLocalMatrix);
             }
         }
-
-    #if UNITY_2019_1_OR_NEWER
-        void OnBeginCameraRenderingSRP(UnityEngine.Rendering.ScriptableRenderContext context, Camera cam)
-    #else
-        void OnBeginCameraRenderingSRP(Camera cam)
-    #endif
+        
+        // Called with a valid camera and a valid master
+        protected override void OnWillCameraRenderThisBeam(Camera cam)
         {
-            m_CurrentCameraRenderingSRP = cam;
-        }
-#endif
+            Debug.Assert(cam.GetComponentInParent<VolumetricLightBeamHD>() == null);
+            UpdateMaterialPropertiesForCamera(cam);
 
-        void OnWillRenderObject()
-        {
-            Camera currentCam = null;
-
-#if VLB_SRP_SUPPORT
-            if (SRPHelper.IsUsingCustomRenderPipeline())
-            {
-                currentCam = m_CurrentCameraRenderingSRP;
-            }
-            else
-#endif
-            {
-                currentCam = Camera.current;
-            }
-
-            OnWillCameraRenderThisBeam(currentCam);
-        }
-
-        void OnWillCameraRenderThisBeam(Camera cam)
-        {
-            if (m_Master && cam)
-            {
-                if (
-#if UNITY_EDITOR
-                    Utils.IsEditorCamera(cam) || // make sure to call UpdateCameraRelatedProperties for editor scene camera 
-#endif
-                    cam.enabled)    // prevent from doing stuff when we render from a previous DynamicOcclusionDepthBuffer's DepthCamera, because the DepthCamera are disabled 
-                {
-                    Debug.Assert(cam.GetComponentInParent<VolumetricLightBeamHD>() == null);
-                    UpdateMaterialPropertiesForCamera(cam);
-
-                    if (m_Shadow)
-                        m_Shadow.OnWillCameraRenderThisBeam(cam, this);
-                }
-            }
+            if (m_Shadow)
+                m_Shadow.OnWillCameraRenderThisBeam(cam, this);
         }
 
         void UpdateDirtyMaterialProperties()
@@ -535,11 +470,9 @@ namespace VLB
                         // Send the gradient matrix every frame since it's not a shader's property
                         SetMaterialProp(ShaderProperties.ColorGradientMatrix, m_ColorGradientMatrix);
                     }
-
-#if VLB_SRP_SUPPORT
+                    
                     // This update is to be able to move beams without trackChangesDuringPlaytime enabled with SRP & GPU Instancing
                     UpdateMatricesPropertiesForGPUInstancingSRP();
-#endif
                 }
                 MaterialChangeStop();
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace VLB
 {
@@ -13,6 +14,20 @@ namespace VLB
         protected Material m_CustomMaterial = null;
 
         protected abstract VolumetricLightBeamAbstractBase GetMaster();
+        
+        // Need to store camera in a stack, to support rendering a camera withing another camera, like it can be the case for Crest water reflection
+        Stack<Camera> m_CurrentCameraRenderingSRP = new Stack<Camera>();
+
+        void OnDisable()
+        {
+            SRPHelper.UnregisterCameraRenderingCallbacks(OnBeginCameraRenderingSRP, OnEndCameraRenderingSRP);
+            m_CurrentCameraRenderingSRP.Clear();
+        }
+
+        protected virtual void OnEnable()
+        {
+            SRPHelper.RegisterCameraRenderingCallbacks(OnBeginCameraRenderingSRP, OnEndCameraRenderingSRP);
+        }
 
         void Start()
         {
@@ -49,6 +64,59 @@ namespace VLB
         {
             if (beamGeom)
                 DestroyImmediate(beamGeom.gameObject);
+        }
+
+        protected abstract void OnWillCameraRenderThisBeam(Camera cam);
+        
+#if UNITY_2019_1_OR_NEWER
+        void OnBeginCameraRenderingSRP(UnityEngine.Rendering.ScriptableRenderContext context, Camera cam)
+#else
+        void OnBeginCameraRenderingSRP(Camera cam)
+#endif
+        {
+            m_CurrentCameraRenderingSRP.Push(cam);
+        }
+        
+#if UNITY_2019_1_OR_NEWER
+        void OnEndCameraRenderingSRP(UnityEngine.Rendering.ScriptableRenderContext context, Camera cam)
+#else
+        void OnEndCameraRenderingSRP(Camera cam)
+#endif
+        {
+            if (m_CurrentCameraRenderingSRP.Count > 0)
+            {
+                m_CurrentCameraRenderingSRP.Pop();
+            }
+        }
+
+        // With Builtin RP, this callback is called with Camera.current properly set
+        // With URP, this callback is called without Camera.current set, so we have to retrieve the current camera from the stack we manage
+        void OnWillRenderObject()
+        {
+            Camera currentCam = null;
+            
+            if (SRPHelper.IsUsingCustomRenderPipeline())
+            {
+                if (m_CurrentCameraRenderingSRP.Count > 0)
+                {
+                    currentCam = m_CurrentCameraRenderingSRP.Peek();
+                }
+            }
+            else
+            {
+                currentCam = Camera.current;
+            }
+
+            if (currentCam && GetMaster())
+            {
+                if (
+                    Utils.IsEditorCamera(currentCam) || // make sure to call UpdateCameraRelatedProperties for editor scene camera 
+                    currentCam.enabled)    // prevent from doing stuff when we render from a previous DynamicOcclusionDepthBuffer's DepthCamera, because the DepthCamera are disabled 
+                {
+                    OnWillCameraRenderThisBeam(currentCam);
+                }
+            }
+            
         }
 
 #if UNITY_EDITOR

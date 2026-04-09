@@ -13,6 +13,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 99888
   packageName: Volumetric Light Beam
-  packageVersion: 2.2.5
+  packageVersion: 2.2.6
   assetPath: Assets/VolumetricLightBeamPackage/Editor/Installer.cs
-  uploadId: 788410
+  uploadId: 861374

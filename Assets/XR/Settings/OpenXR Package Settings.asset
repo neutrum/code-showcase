@@ -1147,12 +1147,12 @@ MonoBehaviour:
     m_List: 00000000
   m_depthSubmissionMode: 2
   m_spacewarpMotionVectorTextureFormat: 0
-  m_optimizeBufferDiscards: 0
+  m_optimizeBufferDiscards: 1
   m_symmetricProjection: 0
   m_optimizeMultiviewRenderRegions: 0
   m_multiviewRenderRegionsOptimizationMode: 0
   m_hasMigratedMultiviewRenderRegionSetting: 1
-  m_foveatedRenderingApi: 1
+  m_foveatedRenderingApi: 0
   m_useOpenXRPredictedTime: 0
 --- !u!114 &-613965699883247800
 MonoBehaviour:
