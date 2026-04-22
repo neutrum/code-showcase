@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.gamelovers.mcp-unity": "https://github.com/CoderGamester/mcp-unity.git",
     "com.lukestilson.openvat": "https://github.com/sharpen3d/openvat-unity.git",
     "com.meta.xr.mrutilitykit": "76.0.0",
     "com.meta.xr.sdk.all": "81.0.0",
