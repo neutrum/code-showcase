@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git mv *)",
+      "Bash(rm \"Assets/Scripts/Trash/Rotate.cs\" \"Assets/Scripts/Trash/Rotate.cs.meta\")"
+    ]
+  }
+}
