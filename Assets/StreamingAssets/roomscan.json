@@ -1,0 +1,17 @@
+{
+    "<AnchorCreatedEvent>k__BackingField": {
+        "m_PersistentCalls": {
+            "m_Calls": []
+        }
+    },
+    "<AnchorUpdatedEvent>k__BackingField": {
+        "m_PersistentCalls": {
+            "m_Calls": []
+        }
+    },
+    "<AnchorRemovedEvent>k__BackingField": {
+        "m_PersistentCalls": {
+            "m_Calls": []
+        }
+    }
+}
